@@ -168,12 +168,13 @@
 .btn-gradient-green {
   background: linear-gradient(135deg, #2ea44f 0%, #238636 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 0 12px rgba(35, 134, 54, 0.25);
+  box-shadow: 0 0 6px rgba(35, 134, 54, 0.12);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .btn-gradient-green:hover {
   background: linear-gradient(135deg, #3dba5e 0%, #2ea44f 100%) !important;
-  box-shadow: 0 0 18px rgba(35, 134, 54, 0.4);
+  box-shadow: 0 0 10px rgba(35, 134, 54, 0.22);
 }
 
 /* Contribution cell hover */
