@@ -1,0 +1,62 @@
+# dependencies
+node_modules/
+.pnpm/
+.yarn/
+dist/
+build/
+out/
+.vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# misc
+.DS_Store
+.env
+.env.*.local
+*.local
+
+# editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# OS files
+Thumbs.db
+
+# coverage
+coverage/
+
+# production
+*.log
+
+# compiled output
+*.tsbuildinfo
+
+# next.js / vercel output
+.next/
+/out/
+
+# Svelte/Vite specific
+.svelte-kit/
+.vite/
+*.svelte.d.ts
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# IDE files
+*.iml
+
+# Storybook
+.storybook-out/
+.storybook-static/
