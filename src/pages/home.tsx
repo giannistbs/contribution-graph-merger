@@ -184,7 +184,7 @@ export default function Home() {
                 ) : (
                   <GitMerge className="w-3.5 h-3.5" />
                 )}
-                {mutation.isPending ? "Fetching..." : "Merge contributions"}
+                {mutation.isPending ? "Fetching..." : usernames.filter((n) => n.trim()).length <= 1 ? "Show contributions" : "Merge contributions"}
               </Button>
             </div>
           </div>
