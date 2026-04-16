@@ -105,16 +105,21 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <div className="max-w-[1012px] mx-auto px-4 py-10">
         {/* Header */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-4">
             <img
               src={theme === "dark" ? darkLogo : lightLogo}
               alt="Contributions Merger"
-              className="h-48 w-48 object-contain"
+              className="h-[120px] w-[120px] object-contain shrink-0"
             />
-            <h1 className="text-xl font-semibold text-foreground tracking-tight">
-              Contributions Merger
-            </h1>
+            <div className="flex flex-col gap-1">
+              <h1 className="text-3xl font-semibold text-foreground tracking-tight">
+                Contributions Merger
+              </h1>
+              <p className="text-sm text-muted-foreground">
+                Combine up to 4 GitHub profiles into a single contribution graph.
+              </p>
+            </div>
           </div>
           <div className="flex items-center gap-1">
           <a
@@ -142,9 +147,7 @@ export default function Home() {
           </Button>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground mb-8 ml-11">
-          Combine up to 4 GitHub profiles into a single contribution graph.
-        </p>
+
 
         {/* Input form */}
         <form onSubmit={handleSubmit} className="mb-10" autoComplete="off">
