@@ -138,7 +138,55 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-image:
+      radial-gradient(ellipse at 15% 65%, rgba(35, 134, 54, 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 15%, rgba(47, 129, 247, 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 55% 95%, rgba(138, 87, 229, 0.05) 0%, transparent 50%);
   }
+
+  .light body {
+    background-image: none;
+  }
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Gradient merge button */
+.btn-gradient-green {
+  background: linear-gradient(135deg, #2ea44f 0%, #238636 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 0 12px rgba(35, 134, 54, 0.25);
+}
+
+.btn-gradient-green:hover {
+  background: linear-gradient(135deg, #3dba5e 0%, #2ea44f 100%) !important;
+  box-shadow: 0 0 18px rgba(35, 134, 54, 0.4);
+}
+
+/* Contribution cell hover */
+.contribution-cell {
+  transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.contribution-cell:hover {
+  transform: scale(1.35);
+  filter: brightness(1.6);
+  cursor: pointer;
 }
 
 /* Contribution cell tooltip */

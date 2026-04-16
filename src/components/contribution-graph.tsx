@@ -160,7 +160,7 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
       {/* Graph container */}
       <div
         ref={containerRef}
-        className="relative rounded-md border border-border bg-card p-4 overflow-x-auto overflow-y-visible"
+        className="glass-card relative rounded-md border border-border bg-card p-4 overflow-x-auto overflow-y-visible"
       >
         <svg
           width={svgWidth}
@@ -212,7 +212,7 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
                   height={CELL_SIZE}
                   rx={CELL_RADIUS}
                   ry={CELL_RADIUS}
-                  className="cursor-pointer"
+                  className="contribution-cell"
                   style={{
                     fill: LEVEL_COLORS[day.level],
                     outline: "1px solid rgba(128, 128, 128, 0.1)",

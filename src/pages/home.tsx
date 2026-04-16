@@ -144,7 +144,7 @@ export default function Home() {
 
         {/* Input form */}
         <form onSubmit={handleSubmit} className="mb-10" autoComplete="off">
-          <div className="rounded-md border border-border bg-card p-4">
+          <div className="glass-card rounded-md border border-border bg-card p-4">
             <div className="flex flex-col gap-3">
               {usernames.map((username, index) => (
                 <div key={index} className="flex items-center gap-2">
@@ -152,7 +152,10 @@ export default function Home() {
                     className="w-3 h-3 rounded-full shrink-0"
                     style={{ backgroundColor: userColors[index] }}
                   />
-                  <div className="relative flex-1">
+                  <div
+                    className="relative flex-1 rounded-md"
+                    style={theme === "dark" ? { boxShadow: `0 0 0 1px ${userColors[index]}40, 0 0 12px ${userColors[index]}18` } : undefined}
+                  >
                     <Github className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <Input
                       data-testid={`input-username-${index}`}
@@ -220,7 +223,7 @@ export default function Home() {
                 type="submit"
                 size="sm"
                 disabled={mutation.isPending}
-                className="bg-[#238636] hover:bg-[#2ea043] text-white border-0 gap-1.5 text-xs"
+                className="btn-gradient-green text-white gap-1.5 text-xs"
                 data-testid="button-generate"
               >
                 {mutation.isPending ? (
