@@ -127,11 +127,7 @@ export default function Home() {
                       data-form-type="other"
                       data-1p-ignore
                       placeholder={
-                        index === 0
-                          ? "Personal GitHub username"
-                          : index === 1
-                            ? "Work GitHub username"
-                            : `GitHub username ${index + 1}`
+                        ["First", "Second", "Third", "Fourth"][index] + " GitHub username"
                       }
                       value={username}
                       onChange={(e) => updateUsername(index, e.target.value)}
