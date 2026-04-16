@@ -108,7 +108,7 @@ export default function Home() {
         </p>
 
         {/* Input form */}
-        <form onSubmit={handleSubmit} className="mb-10">
+        <form onSubmit={handleSubmit} className="mb-10" autoComplete="off">
           <div className="rounded-md border border-border bg-card p-4">
             <div className="flex flex-col gap-3">
               {usernames.map((username, index) => (
@@ -122,6 +122,7 @@ export default function Home() {
                     <Input
                       data-testid={`input-username-${index}`}
                       type="text"
+                      name={`github-handle-${index}`}
                       autoComplete="off"
                       data-lpignore="true"
                       data-form-type="other"
