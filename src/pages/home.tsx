@@ -76,6 +76,9 @@ export default function Home() {
       });
       return;
     }
+    const params = new URLSearchParams();
+    validNames.forEach((u) => params.append("u", u.trim()));
+    history.replaceState(null, "", `?${params}`);
     mutation.mutate(validNames);
   };
 
