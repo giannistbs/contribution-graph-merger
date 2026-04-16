@@ -110,7 +110,7 @@ export default function Home() {
             <img
               src={theme === "dark" ? darkLogo : lightLogo}
               alt="Contributions Merger"
-              className="h-8 w-8 object-contain"
+              className="h-48 w-48 object-contain"
             />
             <h1 className="text-xl font-semibold text-foreground tracking-tight">
               Contributions Merger
