@@ -169,7 +169,7 @@
   background: linear-gradient(135deg, #2ea44f 0%, #238636 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   box-shadow: 0 0 6px rgba(35, 134, 54, 0.12);
-  transition: box-shadow 0.25s ease, background 0.25s ease;
+  transition: box-shadow 0.25s ease !important;
 }
 
 .btn-gradient-green:hover {
