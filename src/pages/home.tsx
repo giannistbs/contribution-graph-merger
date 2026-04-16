@@ -122,6 +122,10 @@ export default function Home() {
                     <Input
                       data-testid={`input-username-${index}`}
                       type="text"
+                      autoComplete="off"
+                      data-lpignore="true"
+                      data-form-type="other"
+                      data-1p-ignore
                       placeholder={
                         index === 0
                           ? "Personal GitHub username"
