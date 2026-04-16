@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, X, GitMerge, Loader2, Github, Sun, Moon, Link } from "lucide-react";
+import darkLogo from "../../logos/dark.png";
+import lightLogo from "../../logos/light.png";
 import { useTheme } from "@/hooks/use-theme";
 import type { MergedContributions } from "@shared/schema";
 import ContributionGraph from "@/components/contribution-graph";
@@ -105,9 +107,11 @@ export default function Home() {
         {/* Header */}
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md bg-[#238636] flex items-center justify-center">
-              <GitMerge className="w-4 h-4 text-white" />
-            </div>
+            <img
+              src={theme === "dark" ? darkLogo : lightLogo}
+              alt="Contributions Merger"
+              className="h-8 w-8 object-contain"
+            />
             <h1 className="text-xl font-semibold text-foreground tracking-tight">
               Contributions Merger
             </h1>
