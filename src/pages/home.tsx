@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import type { MergedContributions } from "@shared/schema";
 import ContributionGraph from "@/components/contribution-graph";
 
 export default function Home() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [usernames, setUsernames] = useState<string[]>(() => {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = params.getAll("u").slice(0, 4);
@@ -153,7 +154,7 @@ export default function Home() {
 
 
         {/* Input form */}
-        <form onSubmit={handleSubmit} className="mb-10" autoComplete="off">
+        <form onSubmit={handleSubmit} className="mb-10" autoComplete="off" ref={formRef}>
           <div className="glass-card rounded-md border border-border bg-card p-4">
             <div className="flex flex-col gap-3">
               {usernames.map((username, index) => (
@@ -180,6 +181,7 @@ export default function Home() {
                       }
                       value={username}
                       onChange={(e) => updateUsername(index, e.target.value)}
+                      onKeyDown={(e) => { if (e.key === "Enter") formRef.current?.requestSubmit(); }}
                       className="pl-9 bg-background border-border h-9 text-sm font-mono"
                     />
                   </div>
