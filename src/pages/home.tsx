@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, X, GitMerge, Loader2, Github, Sun, Moon } from "lucide-react";
+import { Plus, X, GitMerge, Loader2, Github, Sun, Moon, Link } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import type { MergedContributions } from "@shared/schema";
 import ContributionGraph from "@/components/contribution-graph";
 
 export default function Home() {
-  const [usernames, setUsernames] = useState<string[]>([""]);
+  const [usernames, setUsernames] = useState<string[]>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.getAll("u").slice(0, 4);
+    return fromUrl.length > 0 ? fromUrl : [""];
+  });
   const { toast } = useToast();
   const { theme, toggle } = useTheme();
 
@@ -71,6 +75,26 @@ export default function Home() {
       return;
     }
     mutation.mutate(validNames);
+  };
+
+  // Auto-submit when usernames were pre-filled from URL params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.getAll("u").slice(0, 4).filter((u) => u.trim());
+    if (fromUrl.length > 0) {
+      mutation.mutate(fromUrl);
+    }
+  }, []);
+
+  const copyShareLink = () => {
+    const valid = usernames.filter((n) => n.trim());
+    if (valid.length === 0) return;
+    const params = new URLSearchParams();
+    valid.forEach((u) => params.append("u", u.trim()));
+    const url = `${window.location.origin}${window.location.pathname}?${params}`;
+    navigator.clipboard.writeText(url).then(() => {
+      toast({ title: "Link copied!", description: url });
+    });
   };
 
   const userColors = ["#2f81f7", "#da3633", "#f0883e", "#8957e5"];
@@ -169,6 +193,18 @@ export default function Home() {
                   Maximum 4 profiles
                 </span>
               )}
+              <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={copyShareLink}
+                className="text-muted-foreground hover:text-foreground text-xs gap-1.5"
+                title="Copy shareable link"
+              >
+                <Link className="w-3.5 h-3.5" />
+                Share
+              </Button>
               <Button
                 type="submit"
                 size="sm"
@@ -183,6 +219,7 @@ export default function Home() {
                 )}
                 {mutation.isPending ? "Fetching..." : usernames.filter((n) => n.trim()).length <= 1 ? "Show contributions" : "Merge contributions"}
               </Button>
+              </div>
             </div>
           </div>
         </form>
