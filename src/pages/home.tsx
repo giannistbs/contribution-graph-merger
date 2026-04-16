@@ -112,6 +112,16 @@ export default function Home() {
               Contributions Merger
             </h1>
           </div>
+          <div className="flex items-center gap-1">
+          <a
+            href="https://github.com/giannistbs/contribution-graph-merger"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md hover:bg-accent"
+          >
+            <Github className="w-3.5 h-3.5" />
+            Star on GitHub
+          </a>
           <Button
             type="button"
             variant="ghost"
@@ -126,6 +136,7 @@ export default function Home() {
               <Moon className="w-4 h-4" />
             )}
           </Button>
+          </div>
         </div>
         <p className="text-sm text-muted-foreground mb-8 ml-11">
           Combine up to 4 GitHub profiles into a single contribution graph.
