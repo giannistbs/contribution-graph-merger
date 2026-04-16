@@ -6,11 +6,11 @@ const CELL_GAP = 3;
 const CELL_RADIUS = 2;
 
 const LEVEL_COLORS = [
-  "#161b22", // level 0 - empty
-  "#0e4429", // level 1
-  "#006d32", // level 2
-  "#26a641", // level 3
-  "#39d353", // level 4
+  "var(--gh-level-0)",
+  "var(--gh-level-1)",
+  "var(--gh-level-2)",
+  "var(--gh-level-3)",
+  "var(--gh-level-4)",
 ];
 
 const MONTH_LABELS = [
@@ -212,10 +212,10 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
                   height={CELL_SIZE}
                   rx={CELL_RADIUS}
                   ry={CELL_RADIUS}
-                  fill={LEVEL_COLORS[day.level]}
                   className="cursor-pointer"
                   style={{
-                    outline: "1px solid rgba(27, 31, 35, 0.06)",
+                    fill: LEVEL_COLORS[day.level],
+                    outline: "1px solid rgba(128, 128, 128, 0.1)",
                     outlineOffset: "-1px",
                   }}
                   onMouseEnter={(e) => handleMouseEnter(e, day)}
@@ -248,7 +248,7 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
             </div>
             {tooltip.count > 0 &&
               Object.keys(tooltip.perUser).length > 1 && (
-                <div className="mt-1 border-t border-[#30363d] pt-1">
+                <div className="mt-1 border-t border-border pt-1">
                   {Object.entries(tooltip.perUser)
                     .filter(([, count]) => count > 0)
                     .map(([username, count]) => (
@@ -261,11 +261,11 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
                           style={{
                             backgroundColor:
                               data.users.find((u) => u.username === username)
-                                ?.color || "#fff",
+                                ?.color || "currentColor",
                           }}
                         />
-                        <span className="text-[#8b949e]">@{username}</span>
-                        <span className="text-[#e6edf3]">{count}</span>
+                        <span className="text-muted-foreground">@{username}</span>
+                        <span className="text-foreground">{count}</span>
                       </div>
                     ))}
                 </div>
@@ -285,7 +285,7 @@ export default function ContributionGraph({ data }: { data: MergedContributions 
               width: CELL_SIZE,
               height: CELL_SIZE,
               backgroundColor: color,
-              outline: "1px solid rgba(27, 31, 35, 0.06)",
+              outline: "1px solid rgba(128, 128, 128, 0.1)",
               outlineOffset: "-1px",
             }}
           />

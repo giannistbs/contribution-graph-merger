@@ -4,13 +4,15 @@ import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, X, GitMerge, Loader2, Github } from "lucide-react";
+import { Plus, X, GitMerge, Loader2, Github, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import type { MergedContributions } from "@shared/schema";
 import ContributionGraph from "@/components/contribution-graph";
 
 export default function Home() {
   const [usernames, setUsernames] = useState<string[]>([""]);
   const { toast } = useToast();
+  const { theme, toggle } = useTheme();
 
   const mutation = useMutation({
     mutationFn: async (names: string[]) => {
@@ -77,13 +79,29 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <div className="max-w-[1012px] mx-auto px-4 py-10">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-8 h-8 rounded-md bg-[#238636] flex items-center justify-center">
-            <GitMerge className="w-4 h-4 text-white" />
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-md bg-[#238636] flex items-center justify-center">
+              <GitMerge className="w-4 h-4 text-white" />
+            </div>
+            <h1 className="text-xl font-semibold text-foreground tracking-tight">
+              Contributions Merger
+            </h1>
           </div>
-          <h1 className="text-xl font-semibold text-foreground tracking-tight">
-            Contributions Merger
-          </h1>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            onClick={toggle}
+            className="text-muted-foreground hover:text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </Button>
         </div>
         <p className="text-sm text-muted-foreground mb-8 ml-11">
           Combine up to 4 GitHub profiles into a single contribution graph.
